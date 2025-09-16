@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIV Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 4px;
+        }
+        
+        .tagline {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 8px 0;
+            margin-top: 5px;
+        }
+        
+        .data-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .data-btn {
+            padding: 8px 15px;
+            border: 2px solid #666;
+            background: white;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .data-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .dashboard-header {
+            background-color: #4a5bcc;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        
+        .table-container {
+            background-color: white;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #dee2e6;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        th:hover {
+            background-color: #e9ecef;
+        }
+        
+        th::after {
+            content: ' ▲▼';
+            font-size: 10px;
+            opacity: 0.5;
+            margin-left: 5px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 14px;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .score-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+        }
+        
+        .technology-leader {
+            background-color: #28a745;
+        }
+        
+        .technology-adopter {
+            background-color: #007bff;
+        }
+        
+        .technology-follower {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .technology-laggard {
+            background-color: #dc3545;
+        }
+        
+        .report-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .report-link:hover {
+            text-decoration: underline;
+        }
+        
+        .filters {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-group label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .filter-group select, .filter-group input {
+            padding: 6px 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .stats {
+            padding: 20px;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+        
+        .chart-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">TIV</div>
+                <div class="tagline">Connecting tech capability with investment opportunity</div>
+            </div>
+            <div class="data-controls">
+                <a href="#" class="data-btn" onclick="exportData()">Latest data refresh</a>
+                <a href="#" class="data-btn" onclick="exportData()">Next data refresh</a>
+            </div>
+        </div>
+        
+        <div class="dashboard-header">TIV Dashboard</div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label>Category:</label>
+                <select id="categoryFilter" onchange="filterData()">
+                    <option value="">All Categories</option>
+                    <option value="Technology Leader">Technology Leader</option>
+                    <option value="Technology Adopter">Technology Adopter</option>
+                    <option value="Technology Follower">Technology Follower</option>
+                    <option value="Technology Laggard">Technology Laggard</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Search:</label>
+                <input type="text" id="searchInput" placeholder="Company name..." onkeyup="filterData()">
+            </div>
+            <div class="filter-group">
+                <button onclick="clearFilters()" style="padding: 6px 12px; border: 1px solid #ced4da; background: white; cursor: pointer;">Clear Filters</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <span id="totalCompanies">Total Companies: 5</span>
+            <span id="averageScore">Average TIV Score: 298 (66.2%)</span>
+            <span>Last Updated: <span id="lastUpdated">2024-12-19</span></span>
+        </div>
+        
+        <div class="table-container">
+            <table id="tivTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Company</th>
+                        <th onclick="sortTable(1)">Total TIV Score</th>
+                        <th onclick="sortTable(2)">TIV Category</th>
+                        <th onclick="sortTable(3)">Part 1: Business and Strategy</th>
+                        <th onclick="sortTable(4)">Part 2: Data and Applications</th>
+                        <th onclick="sortTable(5)">Part 3: Infrastructure</th>
+                        <th>Report</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">TIV Score Distribution</div>
+            <canvas id="scoreChart" width="800" height="300"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Sample TIV data - replace this with your actual data
+        const tivData = [
+            {
+                company: "Microsoft Corporation",
+                totalScore: 428,
+                percentage: 95.1,
+                category: "Technology Leader",
+                businessScore: 143,
+                applicationsScore: 135,
+                infrastructureScore: 150,
+                reportUrl: "reports/microsoft_tiv_report.pdf",
+                assessmentDate: "2024-12-15"
+            },
+            {
+                company: "eBay Inc.",
+                totalScore: 312,
+                percentage: 69.3,
+                category: "Technology Adopter",
+                businessScore: 98,
+                applicationsScore: 108,
+                infrastructureScore: 106,
+                reportUrl: "reports/ebay_tiv_report.pdf",
+                assessmentDate: "2024-12-19"
+            },
+            {
+                company: "Traditional Corp",
+                totalScore: 180,
+                percentage: 40.0,
+                category: "Technology Follower",
+                businessScore: 60,
+                applicationsScore: 65,
+                infrastructureScore: 55,
+                reportUrl: "reports/traditional_tiv_report.pdf",
+                assessmentDate: "2024-12-10"
+            },
+            {
+                company: "Emerging Tech Co",
+                totalScore: 270,
+                percentage: 60.0,
+                category: "Technology Adopter",
+                businessScore: 85,
+                applicationsScore: 90,
+                infrastructureScore: 95,
+                reportUrl: "reports/emerging_tiv_report.pdf",
+                assessmentDate: "2024-12-08"
+            },
+            {
+                company: "Legacy Industries",
+                totalScore: 135,
+                percentage: 30.0,
+                category: "Technology Laggard",
+                businessScore: 45,
+                applicationsScore: 40,
+                infrastructureScore: 50,
+                reportUrl: "reports/legacy_tiv_report.pdf",
+                assessmentDate: "2024-12-05"
+            }
+        ];
+
+        let filteredData = [...tivData];
+        let sortDirection = {};
+
+        function populateTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            filteredData.forEach(company => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${company.company}</strong></td>
+                    <td><strong>${company.totalScore}</strong> (${company.percentage}%)</td>
+                    <td><span class="score-badge ${company.category.toLowerCase().replace(' ', '-')}">${company.category}</span></td>
+                    <td>${Math.round((company.businessScore/150)*100)}%</td>
+                    <td>${Math.round((company.applicationsScore/150)*100)}%</td>
+                    <td>${Math.round((company.infrastructureScore/150)*100)}%</td>
+                    <td><a href="${company.reportUrl}" class="report-link" target="_blank">Download PDF</a></td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const totalCompanies = filteredData.length;
+            const averageScore = Math.round(filteredData.reduce((sum, company) => sum + company.totalScore, 0) / totalCompanies);
+            const averagePercentage = ((averageScore / 450) * 100).toFixed(1);
+
+            document.getElementById('totalCompanies').textContent = `Total Companies: ${totalCompanies}`;
+            document.getElementById('averageScore').textContent = `Average TIV Score: ${averageScore} (${averagePercentage}%)`;
+        }
+
+        function sortTable(columnIndex) {
+            const column = ['company', 'totalScore', 'category', 'businessScore', 'applicationsScore', 'infrastructureScore'][columnIndex];
+            const isNumeric = ['totalScore', 'businessScore', 'applicationsScore', 'infrastructureScore'].includes(column);
+            
+            const direction = sortDirection[column] === 'asc' ? 'desc' : 'asc';
+            sortDirection[column] = direction;
+
+            filteredData.sort((a, b) => {
+                let valueA = a[column];
+                let valueB = b[column];
+
+                if (isNumeric) {
+                    valueA = Number(valueA);
+                    valueB = Number(valueB);
+                } else {
+                    valueA = valueA.toLowerCase();
+                    valueB = valueB.toLowerCase();
+                }
+
+                if (direction === 'asc') {
+                    return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
+                } else {
+                    return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
+                }
+            });
+
+            populateTable();
+        }
+
+        function filterData() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredData = tivData.filter(company => {
+                const matchesCategory = !categoryFilter || company.category === categoryFilter;
+                const matchesSearch = !searchInput || company.company.toLowerCase().includes(searchInput);
+                
+                return matchesCategory && matchesSearch;
+            });
+
+            populateTable();
+        }
+
+        function clearFilters() {
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('searchInput').value = '';
+            filteredData = [...tivData];
+            populateTable();
+        }
+
+        function exportData() {
+            alert('Data refresh functionality would connect to your assessment system');
+        }
+
+        function drawChart() {
+            const canvas = document.getElementById('scoreChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Chart data
+            const categories = ['Technology Leader', 'Technology Adopter', 'Technology Follower', 'Technology Laggard'];
+            const colors = ['#28a745', '#007bff', '#ffc107', '#dc3545'];
+            const counts = categories.map(cat => tivData.filter(company => company.category === cat).length);
+            
+            // Chart dimensions
+            const chartWidth = 600;
+            const chartHeight = 200;
+            const barWidth = chartWidth / categories.length - 20;
+            const maxCount = Math.max(...counts) || 1;
+            
+            // Draw bars
+            categories.forEach((category, index) => {
+                const barHeight = (counts[index] / maxCount) * chartHeight;
+                const x = index * (barWidth + 20) + 50;
+                const y = canvas.height - barHeight - 50;
+                
+                // Draw bar
+                ctx.fillStyle = colors[index];
+                ctx.fillRect(x, y, barWidth, barHeight);
+                
+                // Draw count label
+                ctx.fillStyle = '#333';
+                ctx.font = '14px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(counts[index].toString(), x + barWidth/2, y - 10);
+                
+                // Draw category label
+                ctx.save();
+                ctx.translate(x + barWidth/2, canvas.height - 20);
+                ctx.rotate(-Math.PI/6);
+                ctx.textAlign = 'right';
+                ctx.fillText(category, 0, 0);
+                ctx.restore();
+            });
+            
+            // Draw title
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 16px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('Companies by TIV Category', 50, 30);
+        }
+
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            populateTable();
+            drawChart();
+            document.getElementById('lastUpdated').textContent = new Date().toISOString().split('T')[0];
+        });
+    </script>
+</body>
+</html>
