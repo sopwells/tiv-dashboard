@@ -25,14 +25,13 @@
             min-height: 100vh;
         }
         
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #eee;
-}
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
         }
         
         .logo {
@@ -243,9 +242,9 @@
         </div>
         
         <div class="stats">
-            <span id="totalCompanies">Total Companies: 5</span>
-            <span id="averageScore">Average TIV Score: 298 (66.2%)</span>
-            <span>Last Updated: <span id="lastUpdated">2024-12-19</span></span>
+            <span id="totalCompanies">Total Companies: 7</span>
+            <span id="averageScore">Average TIV Score: 337 (74.9%)</span>
+            <span>Last Updated: <span id="lastUpdated">2025-09-19</span></span>
         </div>
         
         <div class="table-container">
@@ -274,62 +273,84 @@
     </div>
 
     <script>
-        // Sample TIV data - replace this with your actual data
+        // Your actual TIV data for the seven companies
         const tivData = [
             {
-                company: "Microsoft Corporation",
-                totalScore: 428,
-                percentage: 95.1,
+                company: "eBay",
+                totalScore: 436,
+                percentage: 96.9,
                 category: "Technology Leader",
-                businessScore: 143,
-                applicationsScore: 135,
-                infrastructureScore: 150,
-                reportUrl: "reports/microsoft_tiv_report.pdf",
-                assessmentDate: "2024-12-15"
-            },
-            {
-                company: "eBay Inc.",
-                totalScore: 312,
-                percentage: 69.3,
-                category: "Technology Adopter",
-                businessScore: 98,
-                applicationsScore: 108,
-                infrastructureScore: 106,
+                businessScore: 90.0,
+                applicationsScore: 97.3,
+                infrastructureScore: 93.3,
                 reportUrl: "reports/ebay_tiv_report.pdf",
-                assessmentDate: "2024-12-19"
+                assessmentDate: "2025-09-19"
             },
             {
-                company: "Traditional Corp",
-                totalScore: 180,
-                percentage: 40.0,
-                category: "Technology Follower",
-                businessScore: 60,
-                applicationsScore: 65,
-                infrastructureScore: 55,
-                reportUrl: "reports/traditional_tiv_report.pdf",
-                assessmentDate: "2024-12-10"
+                company: "Amazon",
+                totalScore: 421,
+                percentage: 93.6,
+                category: "Technology Leader",
+                businessScore: 86.7,
+                applicationsScore: 97.3,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/amazon_tiv_report.pdf",
+                assessmentDate: "2025-09-19"
             },
             {
-                company: "Emerging Tech Co",
-                totalScore: 270,
-                percentage: 60.0,
+                company: "JP Morgan",
+                totalScore: 380,
+                percentage: 84.4,
+                category: "Technology Leader",
+                businessScore: 90.0,
+                applicationsScore: 90.0,
+                infrastructureScore: 73.3,
+                reportUrl: "reports/jp_morgan_tiv_report.pdf",
+                assessmentDate: "2025-09-19"
+            },
+            {
+                company: "Nike",
+                totalScore: 378,
+                percentage: 84.0,
+                category: "Technology Leader",
+                businessScore: 89.3,
+                applicationsScore: 97.3,
+                infrastructureScore: 65.3,
+                reportUrl: "reports/nike_tiv_report.pdf",
+                assessmentDate: "2025-09-19"
+            },
+            {
+                company: "Starbucks",
+                totalScore: 321,
+                percentage: 71.3,
                 category: "Technology Adopter",
-                businessScore: 85,
-                applicationsScore: 90,
-                infrastructureScore: 95,
-                reportUrl: "reports/emerging_tiv_report.pdf",
-                assessmentDate: "2024-12-08"
+                businessScore: 64.7,
+                applicationsScore: 96.0,
+                infrastructureScore: 53.3,
+                reportUrl: "reports/starbucks_tiv_report.pdf",
+                assessmentDate: "2025-09-19"
             },
             {
-                company: "Legacy Industries",
-                totalScore: 135,
-                percentage: 30.0,
+                company: "Marks & Spencer",
+                totalScore: 262,
+                percentage: 58.2,
                 category: "Technology Laggard",
-                businessScore: 45,
-                applicationsScore: 40,
-                infrastructureScore: 50,
-                reportUrl: "reports/legacy_tiv_report.pdf",
-                assessmentDate: "2024-12-05"
+                businessScore: 42.0,
+                applicationsScore: 89.3,
+                infrastructureScore: 43.3,
+                reportUrl: "reports/marks_spencer_tiv_report.pdf",
+                assessmentDate: "2025-09-19"
+            },
+            {
+                company: "British Airways",
+                totalScore: 230,
+                percentage: 51.1,
+                category: "Technology Laggard",
+                businessScore: 38.7,
+                applicationsScore: 71.3,
+                infrastructureScore: 43.3,
+                reportUrl: "reports/british_airways_tiv_report.pdf",
+                assessmentDate: "2025-09-19"
             }
         ];
 
@@ -346,9 +367,9 @@
                     <td><strong>${company.company}</strong></td>
                     <td><strong>${company.totalScore}</strong> (${company.percentage}%)</td>
                     <td><span class="score-badge ${company.category.toLowerCase().replace(' ', '-')}">${company.category}</span></td>
-                    <td>${Math.round((company.businessScore/150)*100)}%</td>
-                    <td>${Math.round((company.applicationsScore/150)*100)}%</td>
-                    <td>${Math.round((company.infrastructureScore/150)*100)}%</td>
+                    <td>${company.businessScore}%</td>
+                    <td>${company.applicationsScore}%</td>
+                    <td>${company.infrastructureScore}%</td>
                     <td><a href="${company.reportUrl}" class="report-link" target="_blank">Download PDF</a></td>
                 `;
                 tbody.appendChild(row);
