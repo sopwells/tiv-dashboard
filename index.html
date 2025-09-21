@@ -219,7 +219,7 @@
             </div>
         </div>
         
-        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - Top 20 S&P 500 Companies</div>
+        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - Top 19 S&P 500 Companies</div>
         
         <div class="filters">
             <div class="filter-group">
@@ -273,10 +273,8 @@
     </div>
 
     <script>
-        // TIV Assessment Results for Top 19 S&P 500 Companies (Real Data)
-        // JPMorgan Chase pending - will be added when template processing is resolved
+        // S&P 500 companies with actual TIV scores - sorted by performance
         const tivData = [
-            // Technology Leaders (sorted by score)
             {
                 company: "Microsoft",
                 totalScore: 435,
@@ -365,7 +363,6 @@
                 reportUrl: "reports/TIV_Report_Alphabet_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
-            // Technology Adopters
             {
                 company: "Tesla",
                 totalScore: 298,
@@ -377,7 +374,6 @@
                 reportUrl: "reports/TIV_Report_Tesla_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
-            // Technology Followers
             {
                 company: "Walmart",
                 totalScore: 248,
@@ -422,7 +418,6 @@
                 reportUrl: "reports/TIV_Report_Pfizer_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
-            // Technology Laggards
             {
                 company: "Home Depot",
                 totalScore: 163,
