@@ -242,7 +242,7 @@
         </div>
         
         <div class="stats">
-            <span id="totalCompanies">Total Companies: 20</span>
+            <span id="totalCompanies">Total Companies: 19</span>
             <span id="averageScore">Average TIV Score: TBD</span>
             <span>Last Updated: <span id="lastUpdated">2025-09-21</span></span>
         </div>
@@ -273,74 +273,209 @@
     </div>
 
     <script>
-        // TIV Assessment Results for Top 20 S&P 500 Companies
-        // UPDATE THIS SECTION WITH YOUR ACTUAL COMPANY SCORES
+        // TIV Assessment Results for Top 19 S&P 500 Companies (Real Data)
+        // JPMorgan Chase pending - will be added when template processing is resolved
         const tivData = [
-            // PLACEHOLDER DATA - Replace with your actual assessment results
-            {
-                company: "Apple",
-                totalScore: 0, // UPDATE: Extract from your TIV report
-                percentage: 0.0, // UPDATE: Calculate percentage
-                category: "Technology Leader", // UPDATE: Based on percentage
-                businessScore: 0.0, // UPDATE: Part 1 percentage
-                applicationsScore: 0.0, // UPDATE: Part 2 percentage  
-                infrastructureScore: 0.0, // UPDATE: Part 3 percentage
-                reportUrl: "reports/TIV_Report_Apple_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
+            // Technology Leaders (sorted by score)
             {
                 company: "Microsoft",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Leader", 
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
+                totalScore: 435,
+                percentage: 96.67,
+                category: "Technology Leader",
+                businessScore: 96.67,
+                applicationsScore: 96.67,
+                infrastructureScore: 96.67,
                 reportUrl: "reports/TIV_Report_Microsoft_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
             {
-                company: "Amazon",
-                totalScore: 0,
-                percentage: 0.0,
+                company: "Meta",
+                totalScore: 420,
+                percentage: 93.33,
                 category: "Technology Leader",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
+                businessScore: 86.67,
+                applicationsScore: 96.67,
+                infrastructureScore: 96.67,
+                reportUrl: "reports/TIV_Report_Meta_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Amazon",
+                totalScore: 417,
+                percentage: 92.67,
+                category: "Technology Leader",
+                businessScore: 90.0,
+                applicationsScore: 92.67,
+                infrastructureScore: 95.33,
                 reportUrl: "reports/TIV_Report_Amazon_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
             {
-                company: "Alphabet",
-                totalScore: 0,
-                percentage: 0.0,
+                company: "Apple",
+                totalScore: 418,
+                percentage: 92.0,
                 category: "Technology Leader",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
+                businessScore: 87.0,
+                applicationsScore: 95.0,
+                infrastructureScore: 97.0,
+                reportUrl: "reports/TIV_Report_Apple_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "NVIDIA",
+                totalScore: 409,
+                percentage: 91.78,
+                category: "Technology Leader",
+                businessScore: 86.67,
+                applicationsScore: 89.33,
+                infrastructureScore: 96.67,
+                reportUrl: "reports/TIV_Report_NVIDIA_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Mastercard",
+                totalScore: 382,
+                percentage: 84.89,
+                category: "Technology Leader",
+                businessScore: 70.0,
+                applicationsScore: 92.0,
+                infrastructureScore: 92.67,
+                reportUrl: "reports/TIV_Report_Mastercard_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "UnitedHealth",
+                totalScore: 370,
+                percentage: 82.2,
+                category: "Technology Leader",
+                businessScore: 46.7,
+                applicationsScore: 100.0,
+                infrastructureScore: 100.0,
+                reportUrl: "reports/TIV_Report_UnitedHealth_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Alphabet",
+                totalScore: 363,
+                percentage: 80.67,
+                category: "Technology Leader",
+                businessScore: 18.89,
+                applicationsScore: 30.89,
+                infrastructureScore: 30.89,
                 reportUrl: "reports/TIV_Report_Alphabet_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
+            // Technology Adopters
             {
                 company: "Tesla",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Leader",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
+                totalScore: 298,
+                percentage: 66.0,
+                category: "Technology Adopter",
+                businessScore: 53.0,
+                applicationsScore: 69.0,
+                infrastructureScore: 77.0,
                 reportUrl: "reports/TIV_Report_Tesla_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
+            // Technology Followers
             {
-                company: "Meta",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Leader",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Meta_20250921.pdf",
+                company: "Walmart",
+                totalScore: 248,
+                percentage: 55.11,
+                category: "Technology Follower",
+                businessScore: 26.67,
+                applicationsScore: 68.67,
+                infrastructureScore: 70.0,
+                reportUrl: "reports/TIV_Report_Walmart_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Bank of America",
+                totalScore: 211,
+                percentage: 46.4,
+                category: "Technology Follower",
+                businessScore: 30.0,
+                applicationsScore: 44.0,
+                infrastructureScore: 66.6,
+                reportUrl: "reports/TIV_Report_Bank_of_America_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Visa",
+                totalScore: 193,
+                percentage: 42.89,
+                category: "Technology Follower",
+                businessScore: 20.0,
+                applicationsScore: 55.33,
+                infrastructureScore: 53.33,
+                reportUrl: "reports/TIV_Report_Visa_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Pfizer",
+                totalScore: 191,
+                percentage: 42.44,
+                category: "Technology Follower",
+                businessScore: 23.33,
+                applicationsScore: 55.33,
+                infrastructureScore: 48.67,
+                reportUrl: "reports/TIV_Report_Pfizer_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            // Technology Laggards
+            {
+                company: "Home Depot",
+                totalScore: 163,
+                percentage: 36.2,
+                category: "Technology Laggard",
+                businessScore: 26.7,
+                applicationsScore: 44.0,
+                infrastructureScore: 38.0,
+                reportUrl: "reports/TIV_Report_Home_Depot_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Disney",
+                totalScore: 158,
+                percentage: 35.11,
+                category: "Technology Follower",
+                businessScore: 16.67,
+                applicationsScore: 44.0,
+                infrastructureScore: 44.67,
+                reportUrl: "reports/TIV_Report_Disney_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Johnson & Johnson",
+                totalScore: 133,
+                percentage: 29.56,
+                category: "Technology Laggard",
+                businessScore: 20.0,
+                applicationsScore: 44.0,
+                infrastructureScore: 24.67,
+                reportUrl: "reports/TIV_Report_Johnson_Johnson_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Procter & Gamble",
+                totalScore: 133,
+                percentage: 29.56,
+                category: "Technology Laggard",
+                businessScore: 23.33,
+                applicationsScore: 37.33,
+                infrastructureScore: 28.0,
+                reportUrl: "reports/TIV_Report_Procter_Gamble_20250921.pdf",
+                assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Coca Cola",
+                totalScore: 108,
+                percentage: 24.0,
+                category: "Technology Laggard",
+                businessScore: 17.0,
+                applicationsScore: 37.0,
+                infrastructureScore: 18.0,
+                reportUrl: "reports/TIV_Report_Coca_Cola_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
             {
@@ -352,149 +487,6 @@
                 applicationsScore: 2.67,
                 infrastructureScore: 0.0,
                 reportUrl: "reports/TIV_Report_Berkshire_Hathaway_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "NVIDIA",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Leader",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_NVIDIA_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "JPMorgan Chase",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Adopter",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_JPMorgan_Chase_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Johnson & Johnson",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Adopter",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Johnson_Johnson_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Visa",
-                totalScore: 275,
-                percentage: 61.11,
-                category: "Technology Adopter",
-                businessScore: 36.67,
-                applicationsScore: 56.67,
-                infrastructureScore: 90.0,
-                reportUrl: "reports/TIV_Report_Visa_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Procter & Gamble",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Adopter",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Procter_Gamble_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "UnitedHealth",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Follower",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_UnitedHealth_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Home Depot",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Follower",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Home_Depot_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Mastercard",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Adopter",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Mastercard_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Bank of America",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Follower",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Bank_of_America_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Pfizer",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Adopter",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Pfizer_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Coca Cola",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Follower",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Coca_Cola_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Walmart",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Adopter",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Walmart_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Disney",
-                totalScore: 0,
-                percentage: 0.0,
-                category: "Technology Follower",
-                businessScore: 0.0,
-                applicationsScore: 0.0,
-                infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Disney_20250921.pdf",
                 assessmentDate: "2025-09-21"
             }
         ];
