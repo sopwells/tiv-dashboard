@@ -219,7 +219,7 @@
             </div>
         </div>
         
-        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard</div>
+        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - Top 10 S&P 500 Companies</div>
         
         <div class="filters">
             <div class="filter-group">
@@ -242,9 +242,9 @@
         </div>
         
         <div class="stats">
-            <span id="totalCompanies">Total Companies: 7</span>
-            <span id="averageScore">Average TIV Score: 337 (74.9%)</span>
-            <span>Last Updated: <span id="lastUpdated">2025-09-19</span></span>
+            <span id="totalCompanies">Total Companies: 10</span>
+            <span id="averageScore">Average TIV Score: TBD</span>
+            <span>Last Updated: <span id="lastUpdated">2025-01-01</span></span>
         </div>
         
         <div class="table-container">
@@ -273,8 +273,9 @@
     </div>
 
     <script>
-        // Your actual TIV data for the seven companies
+        // Combined TIV data - Original companies + Top 10 S&P 500 companies (Amazon kept from original)
         const tivData = [
+            // Original companies (keeping existing data including original Amazon)
             {
                 company: "eBay",
                 totalScore: 436,
@@ -287,15 +288,15 @@
                 assessmentDate: "2025-09-19"
             },
             {
-                company: "Amazon",
-                totalScore: 421,
-                percentage: 93.6,
+                company: "Amazon", // Updated with new TIV assessment from S&P 500 batch
+                totalScore: 399,
+                percentage: 88.7,
                 category: "Technology Leader",
                 businessScore: 86.7,
-                applicationsScore: 97.3,
-                infrastructureScore: 96.7,
-                reportUrl: "reports/amazon_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
+                applicationsScore: 92.7,
+                infrastructureScore: 86.7,
+                reportUrl: "reports/TIV_Report_Amazon_20250921.pdf",
+                assessmentDate: "2025-09-01"
             },
             {
                 company: "JP Morgan",
@@ -334,7 +335,7 @@
                 company: "Marks & Spencer",
                 totalScore: 262,
                 percentage: 58.2,
-                category: "Technology Laggard",
+                category: "Technology Follower",
                 businessScore: 42.0,
                 applicationsScore: 89.3,
                 infrastructureScore: 43.3,
@@ -345,12 +346,101 @@
                 company: "British Airways",
                 totalScore: 230,
                 percentage: 51.1,
-                category: "Technology Laggard",
+                category: "Technology Follower",
                 businessScore: 38.7,
                 applicationsScore: 71.3,
                 infrastructureScore: 43.3,
                 reportUrl: "reports/british_airways_tiv_report.pdf",
                 assessmentDate: "2025-09-19"
+            },
+            // New Top S&P 500 companies (excluding Amazon since we kept the original)
+            {
+                company: "Alphabet",
+                totalScore: 440,
+                percentage: 97.8,
+                category: "Technology Leader",
+                businessScore: 93.3,
+                applicationsScore: 100,
+                infrastructureScore: 100,
+                reportUrl: "reports/TIV_Report_Alphabet_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Apple",
+                totalScore: 436,
+                percentage: 96.9,
+                category: "Technology Leader",
+                businessScore: 98.0,
+                applicationsScore: 99.3,
+                infrastructureScore: 93.3,
+                reportUrl: "reports/TIV_Report_Apple_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Meta",
+                totalScore: 436,
+                percentage: 96.9,
+                category: "Technology Leader",
+                businessScore: 96.7,
+                applicationsScore: 97.3,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/TIV_Report_Meta_20250921.pdf",
+                assessmentDate: "2025-09-30"
+            },
+            {
+                company: "Microsoft", // New from S&P 500 batch
+                totalScore: 436,
+                percentage: 96.9,
+                category: "Technology Leader",
+                businessScore: 91.3,
+                applicationsScore: 99.3,
+                infrastructureScore: 100,
+                reportUrl: "reports/TIV_Report_Microsoft_20250921.pdf",
+                assessmentDate: "2025-09-30"
+            },
+            {
+                company: "Nvidia",
+                totalScore: 420,
+                percentage: 93.3,
+                category: "Technology Leader",
+                businessScore: 90.0,
+                applicationsScore: 93.3,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/TIV_Report_Nvidia_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Tesla",
+                totalScore: 389,
+                percentage: 86.4,
+                category: "Technology Leader",
+                businessScore: 76.7,
+                applicationsScore: 96.0,
+                infrastructureScore: 86.7,
+                reportUrl: "reports/TIV_Report_Tesla_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Broadcom",
+                totalScore: 280,
+                percentage: 62.2,
+                category: "Technology Adopter",
+                businessScore: 68.0,
+                applicationsScore: 75.3,
+                infrastructureScore: 43.3,
+                reportUrl: "reports/TIV_Report_Broadcom_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Berkshire Hathaway",
+                totalScore: 63,
+                percentage: 14.0,
+                category: "Technology Laggard",
+                businessScore: 10.0,
+                applicationsScore: 24.7,
+                infrastructureScore: 7.3,
+                reportUrl: "reports/TIV_Report_Berkshire_Hathaway_20250921.pdf",
+                assessmentDate: "2025-09-01"
             }
         ];
 
