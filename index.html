@@ -219,7 +219,7 @@
             </div>
         </div>
         
-        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard </div>
+        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - S&P 500 Companies</div>
         
         <div class="filters">
             <div class="filter-group">
@@ -242,9 +242,9 @@
         </div>
         
         <div class="stats">
-            <span id="totalCompanies">Total Companies: 10</span>
+            <span id="totalCompanies">Total Companies: 19</span>
             <span id="averageScore">Average TIV Score: TBD</span>
-            <span>Last Updated: <span id="lastUpdated">2025-01-01</span></span>
+            <span>Last Updated: <span id="lastUpdated">2025-09-21</span></span>
         </div>
         
         <div class="table-container">
@@ -273,87 +273,20 @@
     </div>
 
     <script>
-        // Combined TIV data - Original companies + Top 10 S&P 500 companies (Amazon kept from original)
+        // S&P 500 companies ranked 1-20 by market cap with actual TIV scores
         const tivData = [
-            // Original companies (keeping existing data including original Amazon)
+            // Top 10 (ranks 1-10)
             {
-                company: "eBay",
-                totalScore: 436,
-                percentage: 96.9,
+                company: "Visa",
+                totalScore: 450,
+                percentage: 100.0,
                 category: "Technology Leader",
-                businessScore: 90.0,
-                applicationsScore: 97.3,
-                infrastructureScore: 93.3,
-                reportUrl: "reports/ebay_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
+                businessScore: 100.0,
+                applicationsScore: 100.0,
+                infrastructureScore: 100.0,
+                reportUrl: "reports/TIV_Report_Visa_20250921.pdf",
+                assessmentDate: "2025-09-30"
             },
-            {
-                company: "Amazon", // Updated with new TIV assessment from S&P 500 batch
-                totalScore: 399,
-                percentage: 88.7,
-                category: "Technology Leader",
-                businessScore: 86.7,
-                applicationsScore: 92.7,
-                infrastructureScore: 86.7,
-                reportUrl: "reports/TIV_Report_Amazon_20250921.pdf",
-                assessmentDate: "2025-09-01"
-            },
-            {
-                company: "JP Morgan",
-                totalScore: 380,
-                percentage: 84.4,
-                category: "Technology Leader",
-                businessScore: 90.0,
-                applicationsScore: 90.0,
-                infrastructureScore: 73.3,
-                reportUrl: "reports/jp_morgan_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
-            },
-            {
-                company: "Nike",
-                totalScore: 378,
-                percentage: 84.0,
-                category: "Technology Leader",
-                businessScore: 89.3,
-                applicationsScore: 97.3,
-                infrastructureScore: 65.3,
-                reportUrl: "reports/nike_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
-            },
-            {
-                company: "Starbucks",
-                totalScore: 321,
-                percentage: 71.3,
-                category: "Technology Adopter",
-                businessScore: 64.7,
-                applicationsScore: 96.0,
-                infrastructureScore: 53.3,
-                reportUrl: "reports/starbucks_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
-            },
-            {
-                company: "Marks & Spencer",
-                totalScore: 262,
-                percentage: 58.2,
-                category: "Technology Follower",
-                businessScore: 42.0,
-                applicationsScore: 89.3,
-                infrastructureScore: 43.3,
-                reportUrl: "reports/marks_spencer_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
-            },
-            {
-                company: "British Airways",
-                totalScore: 230,
-                percentage: 51.1,
-                category: "Technology Follower",
-                businessScore: 38.7,
-                applicationsScore: 71.3,
-                infrastructureScore: 43.3,
-                reportUrl: "reports/british_airways_tiv_report.pdf",
-                assessmentDate: "2025-09-19"
-            },
-            // New Top S&P 500 companies (excluding Amazon since we kept the original)
             {
                 company: "Alphabet",
                 totalScore: 440,
@@ -388,7 +321,7 @@
                 assessmentDate: "2025-09-30"
             },
             {
-                company: "Microsoft", // New from S&P 500 batch
+                company: "Microsoft",
                 totalScore: 436,
                 percentage: 96.9,
                 category: "Technology Leader",
@@ -410,6 +343,50 @@
                 assessmentDate: "2025-09-01"
             },
             {
+                company: "Walmart",
+                totalScore: 414,
+                percentage: 92.0,
+                category: "Technology Leader",
+                businessScore: 100.0,
+                applicationsScore: 99.3,
+                infrastructureScore: 76.7,
+                reportUrl: "reports/TIV_Report_Walmart_20250921.pdf",
+                assessmentDate: "2025-09-30"
+            },
+            {
+                company: "JPMorgan Chase",
+                totalScore: 411,
+                percentage: 91.3,
+                category: "Technology Leader",
+                businessScore: 80.0,
+                applicationsScore: 94.0,
+                infrastructureScore: 100.0,
+                reportUrl: "reports/TIV_Report_JPMorgan_Chase_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Mastercard",
+                totalScore: 411,
+                percentage: 91.3,
+                category: "Technology Leader",
+                businessScore: 91.3,
+                applicationsScore: 99.3,
+                infrastructureScore: 83.3,
+                reportUrl: "reports/TIV_Report_Mastercard_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Amazon",
+                totalScore: 399,
+                percentage: 88.7,
+                category: "Technology Leader",
+                businessScore: 86.7,
+                applicationsScore: 92.7,
+                infrastructureScore: 86.7,
+                reportUrl: "reports/TIV_Report_Amazon_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
                 company: "Tesla",
                 totalScore: 389,
                 percentage: 86.4,
@@ -418,6 +395,51 @@
                 applicationsScore: 96.0,
                 infrastructureScore: 86.7,
                 reportUrl: "reports/TIV_Report_Tesla_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            // Next 10 (ranks 11-20)
+            {
+                company: "Netflix",
+                totalScore: 345,
+                percentage: 76.7,
+                category: "Technology Adopter",
+                businessScore: 66.7,
+                applicationsScore: 96.7,
+                infrastructureScore: 66.7,
+                reportUrl: "reports/TIV_Report_Netflix_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Eli Lilly",
+                totalScore: 327,
+                percentage: 72.7,
+                category: "Technology Adopter",
+                businessScore: 68.0,
+                applicationsScore: 78.0,
+                infrastructureScore: 72.0,
+                reportUrl: "reports/TIV_Report_Eli_Lilly_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Procter & Gamble",
+                totalScore: 313,
+                percentage: 69.6,
+                category: "Technology Adopter",
+                businessScore: 81.3,
+                applicationsScore: 80.7,
+                infrastructureScore: 46.7,
+                reportUrl: "reports/TIV_Report_Procter_Gamble_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Johnson & Johnson",
+                totalScore: 307,
+                percentage: 68.2,
+                category: "Technology Adopter",
+                businessScore: 76.7,
+                applicationsScore: 74.7,
+                infrastructureScore: 53.3,
+                reportUrl: "reports/TIV_Report_Johnson_Johnson_20250921.pdf",
                 assessmentDate: "2025-09-01"
             },
             {
@@ -429,6 +451,28 @@
                 applicationsScore: 75.3,
                 infrastructureScore: 43.3,
                 reportUrl: "reports/TIV_Report_Broadcom_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Exxon Mobil",
+                totalScore: 269,
+                percentage: 59.8,
+                category: "Technology Follower",
+                businessScore: 64.7,
+                applicationsScore: 61.3,
+                infrastructureScore: 53.3,
+                reportUrl: "reports/TIV_Report_Exxon_Mobil_20250921.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Costco",
+                totalScore: 254,
+                percentage: 56.4,
+                category: "Technology Follower",
+                businessScore: 32.0,
+                applicationsScore: 90.7,
+                infrastructureScore: 46.7,
+                reportUrl: "reports/TIV_Report_Costco_20250921.pdf",
                 assessmentDate: "2025-09-01"
             },
             {
