@@ -219,7 +219,7 @@
             </div>
         </div>
         
-        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - Top 19 S&P 500 Companies</div>
+        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - Top S&P 500 Companies</div>
         
         <div class="filters">
             <div class="filter-group">
@@ -242,9 +242,9 @@
         </div>
         
         <div class="stats">
-            <span id="totalCompanies">Total Companies: 19</span>
+            <span id="totalCompanies">Total Companies: 35</span>
             <span id="averageScore">Average TIV Score: TBD</span>
-            <span>Last Updated: <span id="lastUpdated">2025-09-21</span></span>
+            <span>Last Updated: <span id="lastUpdated">2025-09-23</span></span>
         </div>
         
         <div class="table-container">
@@ -275,6 +275,7 @@
     <script>
         // S&P 500 companies with actual TIV scores - sorted by performance
         const tivData = [
+            // Existing companies
             {
                 company: "Microsoft",
                 totalScore: 435,
@@ -363,6 +364,62 @@
                 reportUrl: "reports/TIV_Report_NEW_Alphabet_20250921.pdf",
                 assessmentDate: "2025-09-21"
             },
+            // New companies from the reports
+            {
+                company: "Cisco",
+                totalScore: 358,
+                percentage: 79.56,
+                category: "Technology Adopter",
+                businessScore: 15.56,
+                applicationsScore: 30.67,
+                infrastructureScore: 33.33,
+                reportUrl: "reports/TIV_Report_Cisco_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "JPMorgan Chase",
+                totalScore: 343,
+                percentage: 76.2,
+                category: "Technology Adopter",
+                businessScore: 8.9,
+                applicationsScore: 34.0,
+                infrastructureScore: 33.3,
+                reportUrl: "reports/TIV_Report_JPMorgan_Chase_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Verizon",
+                totalScore: 333,
+                percentage: 74.0,
+                category: "Technology Adopter",
+                businessScore: 14.0,
+                applicationsScore: 26.0,
+                infrastructureScore: 33.0,
+                reportUrl: "reports/TIV_Report_Verizon_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "T-Mobile",
+                totalScore: 323,
+                percentage: 71.56,
+                category: "Technology Adopter",
+                businessScore: 15.56,
+                applicationsScore: 24.0,
+                infrastructureScore: 32.22,
+                reportUrl: "reports/TIV_Report_T-Mobile_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Salesforce",
+                totalScore: 311,
+                percentage: 69.1,
+                category: "Technology Adopter",
+                businessScore: 50.0,
+                applicationsScore: 78.7,
+                infrastructureScore: 78.7,
+                reportUrl: "reports/TIV_Report_Salesforce_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
             {
                 company: "Tesla",
                 totalScore: 298,
@@ -375,6 +432,17 @@
                 assessmentDate: "2025-09-21"
             },
             {
+                company: "Eli Lilly and Company",
+                totalScore: 278,
+                percentage: 61.78,
+                category: "Technology Adopter",
+                businessScore: 10.0,
+                applicationsScore: 55.33,
+                infrastructureScore: 100.0,
+                reportUrl: "reports/TIV_Report_Eli_Lilly_Company_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
                 company: "Walmart",
                 totalScore: 248,
                 percentage: 55.11,
@@ -384,6 +452,17 @@
                 infrastructureScore: 70.0,
                 reportUrl: "reports/TIV_Report_NEW_Walmart_20250921.pdf",
                 assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Broadcom",
+                totalScore: 223,
+                percentage: 49.56,
+                category: "Technology Follower",
+                businessScore: 13.33,
+                applicationsScore: 68.67,
+                infrastructureScore: 66.67,
+                reportUrl: "reports/TIV_Report_Broadcom_20250901.pdf",
+                assessmentDate: "2025-09-01"
             },
             {
                 company: "Bank of America",
@@ -419,6 +498,50 @@
                 assessmentDate: "2025-09-21"
             },
             {
+                company: "AbbVie",
+                totalScore: 184,
+                percentage: 40.89,
+                category: "Technology Follower",
+                businessScore: 4.44,
+                applicationsScore: 17.56,
+                infrastructureScore: 18.89,
+                reportUrl: "reports/TIV_Report_AbbVie_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Abbott",
+                totalScore: 171,
+                percentage: 38.0,
+                category: "Technology Laggard",
+                businessScore: 4.0,
+                applicationsScore: 44.0,
+                infrastructureScore: 57.0,
+                reportUrl: "reports/TIV_Report_Abbott_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Wells Fargo",
+                totalScore: 172,
+                percentage: 38.2,
+                category: "Technology Laggard",
+                businessScore: 8.9,
+                applicationsScore: 44.0,
+                infrastructureScore: 44.0,
+                reportUrl: "reports/TIV_Report_Wells_Fargo_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "Merck",
+                totalScore: 166,
+                percentage: 36.78,
+                category: "Technology Laggard",
+                businessScore: 20.0,
+                applicationsScore: 44.0,
+                infrastructureScore: 46.67,
+                reportUrl: "reports/TIV_Report_Merck_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
                 company: "Home Depot",
                 totalScore: 163,
                 percentage: 36.2,
@@ -430,6 +553,17 @@
                 assessmentDate: "2025-09-21"
             },
             {
+                company: "Eli Lilly",
+                totalScore: 161,
+                percentage: 35.78,
+                category: "Technology Laggard",
+                businessScore: 4.44,
+                applicationsScore: 14.67,
+                infrastructureScore: 16.67,
+                reportUrl: "reports/TIV_Report_Eli_Lilly_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
                 company: "Disney",
                 totalScore: 158,
                 percentage: 35.11,
@@ -439,6 +573,28 @@
                 infrastructureScore: 44.67,
                 reportUrl: "reports/TIV_Report_NEW_Disney_20250921.pdf",
                 assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Thermo Fisher Scientific",
+                totalScore: 156,
+                percentage: 34.67,
+                category: "Technology Laggard",
+                businessScore: 4.44,
+                applicationsScore: 14.67,
+                infrastructureScore: 15.56,
+                reportUrl: "reports/TIV_Report_Thermo_Fisher_Scientific_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "McDonald's",
+                totalScore: 151,
+                percentage: 33.56,
+                category: "Technology Laggard",
+                businessScore: 20.0,
+                applicationsScore: 44.0,
+                infrastructureScore: 36.67,
+                reportUrl: "reports/TIV_Report_McDonalds_20250901.pdf",
+                assessmentDate: "2025-09-01"
             },
             {
                 company: "Johnson & Johnson",
@@ -463,6 +619,17 @@
                 assessmentDate: "2025-09-21"
             },
             {
+                company: "Chevron",
+                totalScore: 131,
+                percentage: 29.11,
+                category: "Technology Laggard",
+                businessScore: 20.0,
+                applicationsScore: 37.33,
+                infrastructureScore: 30.0,
+                reportUrl: "reports/TIV_Report_Chevron_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
                 company: "Coca Cola",
                 totalScore: 108,
                 percentage: 24.0,
@@ -472,6 +639,28 @@
                 infrastructureScore: 18.0,
                 reportUrl: "reports/TIV_Report_NEW_Coca_Cola_20250921.pdf",
                 assessmentDate: "2025-09-21"
+            },
+            {
+                company: "Costco",
+                totalScore: 61,
+                percentage: 13.56,
+                category: "Technology Laggard",
+                businessScore: 5.56,
+                applicationsScore: 24.0,
+                infrastructureScore: 0.0,
+                reportUrl: "reports/TIV_Report_Costco_20250901.pdf",
+                assessmentDate: "2025-09-01"
+            },
+            {
+                company: "NextEra Energy",
+                totalScore: 50,
+                percentage: 11.1,
+                category: "Technology Laggard",
+                businessScore: 20.0,
+                applicationsScore: 13.3,
+                infrastructureScore: 0.0,
+                reportUrl: "reports/TIV_Report_NextEra_Energy_20250901.pdf",
+                assessmentDate: "2025-09-01"
             },
             {
                 company: "Berkshire Hathaway",
