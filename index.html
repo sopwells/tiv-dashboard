@@ -18,7 +18,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
             background-color: white;
@@ -51,24 +51,30 @@
             margin-top: 5px;
         }
         
-        .data-controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
+        .tables-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
         }
         
-        .data-btn {
-            padding: 8px 15px;
-            border: 2px solid #666;
-            background: white;
-            font-size: 12px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #333;
+        @media (max-width: 1400px) {
+            .container {
+                max-width: 100%;
+            }
+            .tables-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         
-        .data-btn:hover {
-            background-color: #f0f0f0;
+        @media (max-width: 900px) {
+            .tables-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .table-section {
+            min-width: 0;
         }
         
         .dashboard-header {
@@ -93,11 +99,11 @@
         
         th {
             background-color: #f8f9fa;
-            padding: 12px 15px;
+            padding: 12px 10px;
             text-align: left;
             font-weight: bold;
             border-bottom: 2px solid #dee2e6;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             user-select: none;
         }
@@ -114,9 +120,9 @@
         }
         
         td {
-            padding: 12px 15px;
+            padding: 10px;
             border-bottom: 1px solid #dee2e6;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         tr:hover {
@@ -125,34 +131,35 @@
         
         .score-badge {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 15px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
             color: white;
         }
         
-        .technology-leader {
+        .technology-leader, .leader, .advanced-leader {
             background-color: #28a745;
         }
         
-        .technology-adopter {
+        .technology-adopter, .adopter, .advanced-adopter {
             background-color: #007bff;
         }
         
-        .technology-follower {
+        .technology-follower, .follower {
             background-color: #ffc107;
             color: #212529;
         }
         
-        .technology-laggard {
+        .technology-laggard, .laggard {
             background-color: #dc3545;
         }
         
         .report-link {
             color: #007bff;
             text-decoration: none;
+            font-size: 12px;
         }
         
         .report-link:hover {
@@ -160,11 +167,11 @@
         }
         
         .filters {
-            padding: 20px;
+            padding: 15px;
             background-color: #f8f9fa;
             border-bottom: 1px solid #dee2e6;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -177,37 +184,23 @@
         
         .filter-group label {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .filter-group select, .filter-group input {
             padding: 6px 10px;
             border: 1px solid #ced4da;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .stats {
-            padding: 20px;
+            padding: 15px;
             background-color: #e9ecef;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
-        }
-        
-        .chart-container {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
-        }
-        
-        .chart-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
+            font-size: 13px;
         }
     </style>
 </head>
@@ -215,156 +208,247 @@
     <div class="container">
         <div class="header">
             <div class="logo-section">
-             <img src="TIV-logo.jpeg" alt="TIV Logo" style="max-height: 200px; width: auto;">
+                <img src="TIV-logo.jpeg" alt="TIV Logo" style="max-height: 200px; width: auto;">
             </div>
         </div>
         
-        <div class="dashboard-header">Tech Investment Valuation (TIV) Dashboard - Top S&P 500 Companies</div>
-        
-        <div class="filters">
-            <div class="filter-group">
-                <label>Category:</label>
-                <select id="categoryFilter" onchange="filterData()">
-                    <option value="">All Categories</option>
-                    <option value="Technology Leader">Technology Leader</option>
-                    <option value="Technology Adopter">Technology Adopter</option>
-                    <option value="Technology Follower">Technology Follower</option>
-                    <option value="Technology Laggard">Technology Laggard</option>
-                </select>
+        <div class="tables-wrapper">
+            <!-- S&P 500 Table -->
+            <div class="table-section">
+                <div class="dashboard-header">S&P 500 Companies</div>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select id="categoryFilterSP" onchange="filterData('sp500')">
+                            <option value="">All Categories</option>
+                            <option value="Technology Leader">Technology Leader</option>
+                            <option value="Leader">Leader</option>
+                            <option value="Advanced Leader">Advanced Leader</option>
+                            <option value="Technology Adopter">Technology Adopter</option>
+                            <option value="Advanced Adopter">Advanced Adopter</option>
+                            <option value="Adopter">Adopter</option>
+                            <option value="Technology Follower">Technology Follower</option>
+                            <option value="Technology Laggard">Technology Laggard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Search:</label>
+                        <input type="text" id="searchInputSP" placeholder="Company..." onkeyup="filterData('sp500')">
+                    </div>
+                    <div class="filter-group">
+                        <button onclick="clearFilters('sp500')" style="padding: 6px 12px; border: 1px solid #ced4da; background: white; cursor: pointer;">Clear</button>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <span id="totalCompaniesSP">Total: 0</span>
+                    <span id="averageScoreSP">Avg: 0%</span>
+                </div>
+                
+                <div class="table-container">
+                    <table id="tivTableSP">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('sp500', 0)">Company</th>
+                                <th onclick="sortTable('sp500', 1)">Score</th>
+                                <th onclick="sortTable('sp500', 2)">Category</th>
+                                <th onclick="sortTable('sp500', 3)">Part 1</th>
+                                <th onclick="sortTable('sp500', 4)">Part 2</th>
+                                <th onclick="sortTable('sp500', 5)">Part 3</th>
+                                <th>Report</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBodySP">
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="filter-group">
-                <label>Search:</label>
-                <input type="text" id="searchInput" placeholder="Company name..." onkeyup="filterData()">
+            
+            <!-- Consumer Discretionary Table -->
+            <div class="table-section">
+                <div class="dashboard-header">Consumer Discretionary</div>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select id="categoryFilterCD" onchange="filterData('cd')">
+                            <option value="">All Categories</option>
+                            <option value="Leader">Leader</option>
+                            <option value="Advanced Adopter">Advanced Adopter</option>
+                            <option value="Adopter">Adopter</option>
+                            <option value="Follower">Follower</option>
+                            <option value="Laggard">Laggard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Search:</label>
+                        <input type="text" id="searchInputCD" placeholder="Company..." onkeyup="filterData('cd')">
+                    </div>
+                    <div class="filter-group">
+                        <button onclick="clearFilters('cd')" style="padding: 6px 12px; border: 1px solid #ced4da; background: white; cursor: pointer;">Clear</button>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <span id="totalCompaniesCD">Total: 0</span>
+                    <span id="averageScoreCD">Avg: 0%</span>
+                </div>
+                
+                <div class="table-container">
+                    <table id="tivTableCD">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('cd', 0)">Company</th>
+                                <th onclick="sortTable('cd', 1)">Score</th>
+                                <th onclick="sortTable('cd', 2)">Category</th>
+                                <th onclick="sortTable('cd', 3)">Part 1</th>
+                                <th onclick="sortTable('cd', 4)">Part 2</th>
+                                <th onclick="sortTable('cd', 5)">Part 3</th>
+                                <th>Report</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBodyCD">
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="filter-group">
-                <button onclick="clearFilters()" style="padding: 6px 12px; border: 1px solid #ced4da; background: white; cursor: pointer;">Clear Filters</button>
-            </div>
-        </div>
-        
-        <div class="stats">
-            <span id="totalCompanies">Total Companies: 35</span>
-            <span id="averageScore">Average TIV Score: TBD</span>
-            <span>Last Updated: <span id="lastUpdated">2025-09-23</span></span>
-        </div>
-        
-        <div class="table-container">
-            <table id="tivTable">
-                <thead>
-                    <tr>
-                        <th onclick="sortTable(0)">Company</th>
-                        <th onclick="sortTable(1)">Total TIV Score</th>
-                        <th onclick="sortTable(2)">TIV Category</th>
-                        <th onclick="sortTable(3)">Part 1: Business and Strategy</th>
-                        <th onclick="sortTable(4)">Part 2: Apps and Data</th>
-                        <th onclick="sortTable(5)">Part 3: Infrastructure</th>
-                        <th>Report</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                    <!-- Data will be populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="chart-container">
-            <div class="chart-title">TIV Score Distribution</div>
-            <canvas id="scoreChart" width="800" height="300"></canvas>
         </div>
     </div>
 
     <script>
-        // S&P 500 companies with actual TIV scores - sorted by performance
-        const tivData = [
-            // Existing companies
+        const sp500Data = [
             {
                 company: "Microsoft",
-                totalScore: 435,
-                percentage: 96.67,
+                totalScore: 385,
+                percentage: 85.6,
                 category: "Technology Leader",
-                businessScore: 96.67,
-                applicationsScore: 96.67,
-                infrastructureScore: 96.67,
-                reportUrl: "reports/TIV_Report_NEW_Microsoft_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Meta",
-                totalScore: 420,
-                percentage: 93.33,
-                category: "Technology Leader",
-                businessScore: 86.67,
-                applicationsScore: 96.67,
-                infrastructureScore: 96.67,
-                reportUrl: "reports/TIV_Report_NEW_Meta_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Amazon",
-                totalScore: 417,
-                percentage: 92.67,
-                category: "Technology Leader",
-                businessScore: 90.0,
-                applicationsScore: 92.67,
-                infrastructureScore: 95.33,
-                reportUrl: "reports/TIV_Report_NEW_Amazon_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Apple",
-                totalScore: 418,
-                percentage: 92.0,
-                category: "Technology Leader",
-                businessScore: 87.0,
-                applicationsScore: 95.0,
-                infrastructureScore: 97.0,
-                reportUrl: "reports/TIV_Report_NEW_Apple_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                businessScore: 76.7,
+                applicationsScore: 90.0,
+                infrastructureScore: 93.3,
+                reportUrl: "reports/TIV_Report_NEW_Microsoft_20251002.pdf"
             },
             {
                 company: "NVIDIA",
-                totalScore: 409,
-                percentage: 91.78,
-                category: "Technology Leader",
-                businessScore: 86.67,
-                applicationsScore: 89.33,
-                infrastructureScore: 96.67,
-                reportUrl: "reports/TIV_Report_NEW_NVIDIA_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                totalScore: 415,
+                percentage: 92.2,
+                category: "Advanced Leader",
+                businessScore: 83.3,
+                applicationsScore: 96.7,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/TIV_Report_NEW_NVIDIA_20251002.pdf"
             },
             {
-                company: "Mastercard",
-                totalScore: 382,
-                percentage: 84.89,
-                category: "Technology Leader",
-                businessScore: 70.0,
-                applicationsScore: 92.0,
-                infrastructureScore: 92.67,
-                reportUrl: "reports/TIV_Report_NEW_Mastercard_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                company: "Apple",
+                totalScore: 385,
+                percentage: 85.6,
+                category: "Leader",
+                businessScore: 80.0,
+                applicationsScore: 90.0,
+                infrastructureScore: 86.7,
+                reportUrl: "reports/TIV_Report_NEW_Apple_20251002.pdf"
             },
             {
-                company: "UnitedHealth",
-                totalScore: 370,
-                percentage: 82.2,
-                category: "Technology Leader",
-                businessScore: 46.7,
-                applicationsScore: 100.0,
+                company: "Amazon",
+                totalScore: 405,
+                percentage: 90.0,
+                category: "Leader",
+                businessScore: 76.7,
+                applicationsScore: 93.3,
                 infrastructureScore: 100.0,
-                reportUrl: "reports/TIV_Report_NEW_UnitedHealth_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Amazon_20251002.pdf"
             },
             {
                 company: "Alphabet",
-                totalScore: 363,
-                percentage: 80.67,
-                category: "Technology Leader",
-                businessScore: 18.89,
-                applicationsScore: 30.89,
-                infrastructureScore: 30.89,
-                reportUrl: "reports/TIV_Report_NEW_Alphabet_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                totalScore: 405,
+                percentage: 90.0,
+                category: "Leader",
+                businessScore: 76.7,
+                applicationsScore: 93.3,
+                infrastructureScore: 100.0,
+                reportUrl: "reports/TIV_Report_NEW_Alphabet_20251002.pdf"
             },
-            // New companies from the reports
+            {
+                company: "Meta",
+                totalScore: 400,
+                percentage: 88.9,
+                category: "Leader",
+                businessScore: 76.7,
+                applicationsScore: 93.3,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/TIV_Report_NEW_Meta_20251002.pdf"
+            },
+            {
+                company: "Netflix",
+                totalScore: 415,
+                percentage: 92.2,
+                category: "Technology Leader",
+                businessScore: 86.7,
+                applicationsScore: 96.7,
+                infrastructureScore: 93.3,
+                reportUrl: "reports/TIV_Report_NEW_Netflix_20251001.pdf"
+            },
+            {
+                company: "Oracle",
+                totalScore: 415,
+                percentage: 92.2,
+                category: "Technology Leader",
+                businessScore: 90.0,
+                applicationsScore: 90.0,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/TIV_Report_NEW_Oracle_20251001.pdf"
+            },
+            {
+                company: "Mastercard",
+                totalScore: 410,
+                percentage: 91.1,
+                category: "Technology Leader",
+                businessScore: 90.0,
+                applicationsScore: 90.0,
+                infrastructureScore: 93.3,
+                reportUrl: "reports/TIV_Report_NEW_Mastercard_20251001.pdf"
+            },
+            {
+                company: "Visa",
+                totalScore: 405,
+                percentage: 90.0,
+                category: "Technology Leader",
+                businessScore: 90.0,
+                applicationsScore: 86.7,
+                infrastructureScore: 93.3,
+                reportUrl: "reports/TIV_Report_NEW_Visa_20251001.pdf"
+            },
+            {
+                company: "Exxon Mobil",
+                totalScore: 385,
+                percentage: 85.6,
+                category: "Technology Leader",
+                businessScore: 86.7,
+                applicationsScore: 73.3,
+                infrastructureScore: 96.7,
+                reportUrl: "reports/TIV_Report_NEW_Exxon_Mobil_20251001.pdf"
+            },
+            {
+                company: "Tesla",
+                totalScore: 355,
+                percentage: 78.9,
+                category: "Advanced Adopter",
+                businessScore: 66.7,
+                applicationsScore: 80.0,
+                infrastructureScore: 90.0,
+                reportUrl: "reports/TIV_Report_NEW_Tesla_20251002.pdf"
+            },
+            {
+                company: "Broadcom",
+                totalScore: 350,
+                percentage: 78.0,
+                category: "Advanced Adopter",
+                businessScore: 73.3,
+                applicationsScore: 80.0,
+                infrastructureScore: 80.0,
+                reportUrl: "reports/TIV_Report_NEW_Broadcom_20251002.pdf"
+            },
+            // Placeholder companies from original code
             {
                 company: "Cisco",
                 totalScore: 358,
@@ -373,8 +457,7 @@
                 businessScore: 15.56,
                 applicationsScore: 30.67,
                 infrastructureScore: 33.33,
-                reportUrl: "reports/Cisco_TIV_Report.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/Cisco_TIV_Report.pdf"
             },
             {
                 company: "JPMorgan Chase",
@@ -384,8 +467,7 @@
                 businessScore: 8.9,
                 applicationsScore: 34.0,
                 infrastructureScore: 33.3,
-                reportUrl: "reports/JPMorgan_Chase_TIV_Report.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/JPMorgan_Chase_TIV_Report.pdf"
             },
             {
                 company: "Verizon",
@@ -395,8 +477,7 @@
                 businessScore: 14.0,
                 applicationsScore: 26.0,
                 infrastructureScore: 33.0,
-                reportUrl: "reports/Verizon_TIV_Report.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/Verizon_TIV_Report.pdf"
             },
             {
                 company: "T-Mobile",
@@ -406,8 +487,7 @@
                 businessScore: 15.56,
                 applicationsScore: 24.0,
                 infrastructureScore: 32.22,
-                reportUrl: "reports/T-Mobile_TIV_Report.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/T-Mobile_TIV_Report.pdf"
             },
             {
                 company: "Salesforce",
@@ -417,19 +497,7 @@
                 businessScore: 50.0,
                 applicationsScore: 78.7,
                 infrastructureScore: 78.7,
-                reportUrl: "reports/TIV_Report_NEW_Salesforce_20250922.pdf",
-                assessmentDate: "2025-09-01"
-            },
-            {
-                company: "Tesla",
-                totalScore: 298,
-                percentage: 66.0,
-                category: "Technology Adopter",
-                businessScore: 53.0,
-                applicationsScore: 69.0,
-                infrastructureScore: 77.0,
-                reportUrl: "reports/TIV_Report_NEW_Tesla_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Salesforce_20250922.pdf"
             },
             {
                 company: "Eli Lilly and Company",
@@ -439,8 +507,7 @@
                 businessScore: 10.0,
                 applicationsScore: 55.33,
                 infrastructureScore: 100.0,
-                reportUrl: "reports/TIV_Report_Eli_Lilly_Company_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_Eli_Lilly_Company_20250901.pdf"
             },
             {
                 company: "Walmart",
@@ -450,19 +517,7 @@
                 businessScore: 26.67,
                 applicationsScore: 68.67,
                 infrastructureScore: 70.0,
-                reportUrl: "reports/TIV_Report_NEW_Walmart_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Broadcom",
-                totalScore: 223,
-                percentage: 49.56,
-                category: "Technology Follower",
-                businessScore: 13.33,
-                applicationsScore: 68.67,
-                infrastructureScore: 66.67,
-                reportUrl: "reports/TIV_Report_Broadcom_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_NEW_Walmart_20250921.pdf"
             },
             {
                 company: "Bank of America",
@@ -472,19 +527,7 @@
                 businessScore: 30.0,
                 applicationsScore: 44.0,
                 infrastructureScore: 66.6,
-                reportUrl: "reports/TIV_Report_NEW_Bank_of_America_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Visa",
-                totalScore: 193,
-                percentage: 42.89,
-                category: "Technology Follower",
-                businessScore: 20.0,
-                applicationsScore: 55.33,
-                infrastructureScore: 53.33,
-                reportUrl: "reports/TIV_Report_NEW_Visa_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Bank_of_America_20250921.pdf"
             },
             {
                 company: "Pfizer",
@@ -494,8 +537,7 @@
                 businessScore: 23.33,
                 applicationsScore: 55.33,
                 infrastructureScore: 48.67,
-                reportUrl: "reports/TIV_Report_NEW_Pfizer_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Pfizer_20250921.pdf"
             },
             {
                 company: "AbbVie",
@@ -505,8 +547,7 @@
                 businessScore: 4.44,
                 applicationsScore: 17.56,
                 infrastructureScore: 18.89,
-                reportUrl: "reports/TIV_Report_AbbVie_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_AbbVie_20250901.pdf"
             },
             {
                 company: "Abbott",
@@ -516,8 +557,7 @@
                 businessScore: 4.0,
                 applicationsScore: 44.0,
                 infrastructureScore: 57.0,
-                reportUrl: "reports/TIV_Report_Abbott_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_Abbott_20250901.pdf"
             },
             {
                 company: "Wells Fargo",
@@ -527,8 +567,7 @@
                 businessScore: 8.9,
                 applicationsScore: 44.0,
                 infrastructureScore: 44.0,
-                reportUrl: "reports/TIV_Report_Wells_Fargo_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_Wells_Fargo_20250901.pdf"
             },
             {
                 company: "Merck",
@@ -538,8 +577,7 @@
                 businessScore: 20.0,
                 applicationsScore: 44.0,
                 infrastructureScore: 46.67,
-                reportUrl: "reports/TIV_Report_Merck_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_Merck_20250901.pdf"
             },
             {
                 company: "Home Depot",
@@ -549,19 +587,7 @@
                 businessScore: 26.7,
                 applicationsScore: 44.0,
                 infrastructureScore: 38.0,
-                reportUrl: "reports/TIV_Report_NEW_Home_Depot_20250921.pdf",
-                assessmentDate: "2025-09-21"
-            },
-            {
-                company: "Eli Lilly",
-                totalScore: 161,
-                percentage: 35.78,
-                category: "Technology Laggard",
-                businessScore: 4.44,
-                applicationsScore: 14.67,
-                infrastructureScore: 16.67,
-                reportUrl: "reports/TIV_Report_Eli_Lilly_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_NEW_Home_Depot_20250921.pdf"
             },
             {
                 company: "Disney",
@@ -571,10 +597,8 @@
                 businessScore: 16.67,
                 applicationsScore: 44.0,
                 infrastructureScore: 44.67,
-                reportUrl: "reports/TIV_Report_NEW_Disney_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Disney_20250921.pdf"
             },
-
             {
                 company: "McDonald's",
                 totalScore: 151,
@@ -583,8 +607,7 @@
                 businessScore: 20.0,
                 applicationsScore: 44.0,
                 infrastructureScore: 36.67,
-                reportUrl: "reports/TIV_Report_McDonalds_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_McDonalds_20250901.pdf"
             },
             {
                 company: "Johnson & Johnson",
@@ -594,8 +617,7 @@
                 businessScore: 20.0,
                 applicationsScore: 44.0,
                 infrastructureScore: 24.67,
-                reportUrl: "reports/TIV_Report_NEW_Johnson_&_Johnson_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Johnson_&_Johnson_20250921.pdf"
             },
             {
                 company: "Procter & Gamble",
@@ -605,8 +627,7 @@
                 businessScore: 23.33,
                 applicationsScore: 37.33,
                 infrastructureScore: 28.0,
-                reportUrl: "reports/TIV_Report_NEW_Procter_&_Gamble_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Procter_&_Gamble_20250921.pdf"
             },
             {
                 company: "Chevron",
@@ -616,8 +637,7 @@
                 businessScore: 20.0,
                 applicationsScore: 37.33,
                 infrastructureScore: 30.0,
-                reportUrl: "reports/TIV_Report_Chevron_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_Chevron_20250901.pdf"
             },
             {
                 company: "Coca Cola",
@@ -627,8 +647,7 @@
                 businessScore: 17.0,
                 applicationsScore: 37.0,
                 infrastructureScore: 18.0,
-                reportUrl: "reports/TIV_Report_NEW_Coca_Cola_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Coca_Cola_20250921.pdf"
             },
             {
                 company: "Costco",
@@ -638,8 +657,7 @@
                 businessScore: 5.56,
                 applicationsScore: 24.0,
                 infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_Costco_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_Costco_20250901.pdf"
             },
             {
                 company: "NextEra Energy",
@@ -649,8 +667,7 @@
                 businessScore: 20.0,
                 applicationsScore: 13.3,
                 infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_NextEra_Energy_20250901.pdf",
-                assessmentDate: "2025-09-01"
+                reportUrl: "reports/TIV_Report_NextEra_Energy_20250901.pdf"
             },
             {
                 company: "Berkshire Hathaway",
@@ -660,52 +677,130 @@
                 businessScore: 13.33,
                 applicationsScore: 2.67,
                 infrastructureScore: 0.0,
-                reportUrl: "reports/TIV_Report_NEW_Berkshire_Hathaway_20250921.pdf",
-                assessmentDate: "2025-09-21"
+                reportUrl: "reports/TIV_Report_NEW_Berkshire_Hathaway_20250921.pdf"
             }
         ];
 
-        let filteredData = [...tivData];
-        let sortDirection = {};
+        const consumerDiscretionaryData = [
+            {
+                company: "LVMH",
+                totalScore: 400,
+                percentage: 88.9,
+                category: "Leader",
+                businessScore: 86.7,
+                applicationsScore: 93.3,
+                infrastructureScore: 86.7,
+                reportUrl: "reports/TIV_Report_NEW_LVMH_20251002.pdf"
+            },
+            {
+                company: "Burberry",
+                totalScore: 360,
+                percentage: 80.0,
+                category: "Advanced Adopter",
+                businessScore: 76.7,
+                applicationsScore: 86.7,
+                infrastructureScore: 76.7,
+                reportUrl: "reports/TIV_Report_NEW_Burberry_20251002.pdf"
+            },
+            {
+                company: "Richemont",
+                totalScore: 315,
+                percentage: 70.0,
+                category: "Adopter",
+                businessScore: 66.7,
+                applicationsScore: 76.7,
+                infrastructureScore: 66.7,
+                reportUrl: "reports/TIV_Report_NEW_Richemont_20251002.pdf"
+            },
+            {
+                company: "Tapestry",
+                totalScore: 305,
+                percentage: 67.8,
+                category: "Adopter",
+                businessScore: 66.7,
+                applicationsScore: 73.3,
+                infrastructureScore: 63.3,
+                reportUrl: "reports/TIV_Report_NEW_Tapestry_20251002.pdf"
+            },
+            {
+                company: "Capri",
+                totalScore: 285,
+                percentage: 63.3,
+                category: "Adopter",
+                businessScore: 63.3,
+                applicationsScore: 66.7,
+                infrastructureScore: 60.0,
+                reportUrl: "reports/TIV_Report_NEW_Capri_20251002.pdf"
+            },
+            {
+                company: "Marks & Spencer",
+                totalScore: 240,
+                percentage: 53.3,
+                category: "Technology Follower",
+                businessScore: 53.3,
+                applicationsScore: 63.3,
+                infrastructureScore: 43.3,
+                reportUrl: "reports/TIV_Report_NEW_Marks_Spencer_20251002.pdf"
+            },
+            {
+                company: "Hermès",
+                totalScore: 130,
+                percentage: 28.9,
+                category: "Laggard",
+                businessScore: 40.0,
+                applicationsScore: 26.7,
+                infrastructureScore: 20.0,
+                reportUrl: "reports/TIV_Report_NEW_Hermes_20251002.pdf"
+            }
+        ];
 
-        function populateTable() {
-            const tbody = document.getElementById('tableBody');
+        let filteredSP500 = [...sp500Data];
+        let filteredCD = [...consumerDiscretionaryData];
+        let sortDirectionSP = {};
+        let sortDirectionCD = {};
+
+        function populateTable(tableType) {
+            const data = tableType === 'sp500' ? filteredSP500 : filteredCD;
+            const tbody = document.getElementById(tableType === 'sp500' ? 'tableBodySP' : 'tableBodyCD');
             tbody.innerHTML = '';
 
-            filteredData.forEach(company => {
+            data.forEach(company => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td><strong>${company.company}</strong></td>
                     <td><strong>${company.percentage}%</strong></td>
-                    <td><span class="score-badge ${company.category.toLowerCase().replace(' ', '-')}">${company.category}</span></td>
+                    <td><span class="score-badge ${company.category.toLowerCase().replace(/ /g, '-')}">${company.category}</span></td>
                     <td>${company.businessScore}%</td>
                     <td>${company.applicationsScore}%</td>
                     <td>${company.infrastructureScore}%</td>
-                    <td><a href="${company.reportUrl}" class="report-link" target="_blank">Download PDF</a></td>
+                    <td><a href="${company.reportUrl}" class="report-link" target="_blank">PDF</a></td>
                 `;
                 tbody.appendChild(row);
             });
 
-            updateStats();
+            updateStats(tableType);
         }
 
-        function updateStats() {
-            const totalCompanies = filteredData.length;
-            const averageScore = Math.round(filteredData.reduce((sum, company) => sum + company.totalScore, 0) / totalCompanies);
-            const averagePercentage = ((averageScore / 450) * 100).toFixed(1);
+        function updateStats(tableType) {
+            const data = tableType === 'sp500' ? filteredSP500 : filteredCD;
+            const totalCompanies = data.length;
+            const averagePercentage = (data.reduce((sum, company) => sum + company.percentage, 0) / totalCompanies).toFixed(1);
 
-            document.getElementById('totalCompanies').textContent = `Total Companies: ${totalCompanies}`;
-            document.getElementById('averageScore').textContent = `Average TIV Score: ${averagePercentage}%`;
+            const suffix = tableType === 'sp500' ? 'SP' : 'CD';
+            document.getElementById(`totalCompanies${suffix}`).textContent = `Total: ${totalCompanies}`;
+            document.getElementById(`averageScore${suffix}`).textContent = `Avg: ${averagePercentage}%`;
         }
 
-        function sortTable(columnIndex) {
-            const column = ['company', 'totalScore', 'category', 'businessScore', 'applicationsScore', 'infrastructureScore'][columnIndex];
-            const isNumeric = ['totalScore', 'businessScore', 'applicationsScore', 'infrastructureScore'].includes(column);
+        function sortTable(tableType, columnIndex) {
+            const sortDir = tableType === 'sp500' ? sortDirectionSP : sortDirectionCD;
+            const column = ['company', 'percentage', 'category', 'businessScore', 'applicationsScore', 'infrastructureScore'][columnIndex];
+            const isNumeric = ['percentage', 'businessScore', 'applicationsScore', 'infrastructureScore'].includes(column);
             
-            const direction = sortDirection[column] === 'asc' ? 'desc' : 'asc';
-            sortDirection[column] = direction;
+            const direction = sortDir[column] === 'asc' ? 'desc' : 'asc';
+            sortDir[column] = direction;
 
-            filteredData.sort((a, b) => {
+            const data = tableType === 'sp500' ? filteredSP500 : filteredCD;
+            data.sort((a, b) => {
                 let valueA = a[column];
                 let valueB = b[column];
 
@@ -724,85 +819,47 @@
                 }
             });
 
-            populateTable();
+            populateTable(tableType);
         }
 
-        function filterData() {
-            const categoryFilter = document.getElementById('categoryFilter').value;
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        function filterData(tableType) {
+            const suffix = tableType === 'sp500' ? 'SP' : 'CD';
+            const categoryFilter = document.getElementById(`categoryFilter${suffix}`).value;
+            const searchInput = document.getElementById(`searchInput${suffix}`).value.toLowerCase();
+            const sourceData = tableType === 'sp500' ? sp500Data : consumerDiscretionaryData;
 
-            filteredData = tivData.filter(company => {
+            const filtered = sourceData.filter(company => {
                 const matchesCategory = !categoryFilter || company.category === categoryFilter;
                 const matchesSearch = !searchInput || company.company.toLowerCase().includes(searchInput);
                 
                 return matchesCategory && matchesSearch;
             });
 
-            populateTable();
+            if (tableType === 'sp500') {
+                filteredSP500 = filtered;
+            } else {
+                filteredCD = filtered;
+            }
+
+            populateTable(tableType);
         }
 
-        function clearFilters() {
-            document.getElementById('categoryFilter').value = '';
-            document.getElementById('searchInput').value = '';
-            filteredData = [...tivData];
-            populateTable();
+        function clearFilters(tableType) {
+            const suffix = tableType === 'sp500' ? 'SP' : 'CD';
+            document.getElementById(`categoryFilter${suffix}`).value = '';
+            document.getElementById(`searchInput${suffix}`).value = '';
+            
+            if (tableType === 'sp500') {
+                filteredSP500 = [...sp500Data];
+            } else {
+                filteredCD = [...consumerDiscretionaryData];
+            }
+            
+            populateTable(tableType);
         }
 
-        function drawChart() {
-            const canvas = document.getElementById('scoreChart');
-            const ctx = canvas.getContext('2d');
-            
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Chart data
-            const categories = ['Technology Leader', 'Technology Adopter', 'Technology Follower', 'Technology Laggard'];
-            const colors = ['#28a745', '#007bff', '#ffc107', '#dc3545'];
-            const counts = categories.map(cat => tivData.filter(company => company.category === cat).length);
-            
-            // Chart dimensions
-            const chartWidth = 600;
-            const chartHeight = 200;
-            const barWidth = chartWidth / categories.length - 20;
-            const maxCount = Math.max(...counts) || 1;
-            
-            // Draw bars
-            categories.forEach((category, index) => {
-                const barHeight = (counts[index] / maxCount) * chartHeight;
-                const x = index * (barWidth + 20) + 50;
-                const y = canvas.height - barHeight - 50;
-                
-                // Draw bar
-                ctx.fillStyle = colors[index];
-                ctx.fillRect(x, y, barWidth, barHeight);
-                
-                // Draw count label
-                ctx.fillStyle = '#333';
-                ctx.font = '14px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText(counts[index].toString(), x + barWidth/2, y - 10);
-                
-                // Draw category label
-                ctx.save();
-                ctx.translate(x + barWidth/2, canvas.height - 20);
-                ctx.rotate(-Math.PI/6);
-                ctx.textAlign = 'right';
-                ctx.fillText(category, 0, 0);
-                ctx.restore();
-            });
-            
-            // Draw title
-            ctx.fillStyle = '#333';
-            ctx.font = 'bold 16px Arial';
-            ctx.textAlign = 'left';
-            ctx.fillText('Companies by TIV Category', 50, 30);
-        }
-
-        // Initialize the dashboard
+        // Initialize both tables
         document.addEventListener('DOMContentLoaded', function() {
-            populateTable();
-            drawChart();
+            populateTable('sp500');
+            populateTable('cd');
         });
-    </script>
-</body>
-</html>
