@@ -45,47 +45,6 @@
         
         <div class="tables-wrapper">
             <div class="table-section">
-                <div class="dashboard-header">Health and Wellbeing</div>
-                <div class="filters">
-                    <div class="filter-group">
-                        <label>Category:</label>
-                        <select id="categoryFilterHW" onchange="filterData('hw')">
-                            <option value="">All Categories</option>
-                            <option value="Follower">Follower</option>
-                            <option value="Laggard">Laggard</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Search:</label>
-                        <input type="text" id="searchInputHW" placeholder="Company..." onkeyup="filterData('hw')">
-                    </div>
-                    <div class="filter-group">
-                        <button onclick="clearFilters('hw')" style="padding: 6px 12px; border: 1px solid #ced4da; background: white; cursor: pointer;">Clear</button>
-                    </div>
-                </div>
-                <div class="stats">
-                    <span id="totalCompaniesHW">Total: 0</span>
-                    <span id="averageScoreHW">Avg: 0%</span>
-                </div>
-                <div class="table-container">
-                    <table id="tivTableHW">
-                        <thead>
-                            <tr>
-                                <th onclick="sortTable('hw', 0)">Company</th>
-                                <th onclick="sortTable('hw', 1)">Score</th>
-                                <th onclick="sortTable('hw', 2)">Category</th>
-                                <th onclick="sortTable('hw', 3)">Part 1</th>
-                                <th onclick="sortTable('hw', 4)">Part 2</th>
-                                <th onclick="sortTable('hw', 5)">Part 3</th>
-                                <th>Report</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBodyHW"></tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="table-section">
                 <div class="dashboard-header">S&P 500 Companies</div>
                 <div class="filters">
                     <div class="filter-group">
@@ -168,6 +127,47 @@
                             </tr>
                         </thead>
                         <tbody id="tableBodyCD"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="table-section">
+                <div class="dashboard-header">Health and Wellbeing</div>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select id="categoryFilterHW" onchange="filterData('hw')">
+                            <option value="">All Categories</option>
+                            <option value="Follower">Follower</option>
+                            <option value="Laggard">Laggard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Search:</label>
+                        <input type="text" id="searchInputHW" placeholder="Company..." onkeyup="filterData('hw')">
+                    </div>
+                    <div class="filter-group">
+                        <button onclick="clearFilters('hw')" style="padding: 6px 12px; border: 1px solid #ced4da; background: white; cursor: pointer;">Clear</button>
+                    </div>
+                </div>
+                <div class="stats">
+                    <span id="totalCompaniesHW">Total: 0</span>
+                    <span id="averageScoreHW">Avg: 0%</span>
+                </div>
+                <div class="table-container">
+                    <table id="tivTableHW">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('hw', 0)">Company</th>
+                                <th onclick="sortTable('hw', 1)">Score</th>
+                                <th onclick="sortTable('hw', 2)">Category</th>
+                                <th onclick="sortTable('hw', 3)">Part 1</th>
+                                <th onclick="sortTable('hw', 4)">Part 2</th>
+                                <th onclick="sortTable('hw', 5)">Part 3</th>
+                                <th>Report</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBodyHW"></tbody>
                     </table>
                 </div>
             </div>
