@@ -80,7 +80,7 @@
                                 <th onclick="sortTable('sp500', 3)">Part 1</th>
                                 <th onclick="sortTable('sp500', 4)">Part 2</th>
                                 <th onclick="sortTable('sp500', 5)">Part 3</th>
-                                <th>Report</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                         <tbody id="tableBodySP"></tbody>
@@ -124,7 +124,7 @@
                                 <th onclick="sortTable('cd', 3)">Part 1</th>
                                 <th onclick="sortTable('cd', 4)">Part 2</th>
                                 <th onclick="sortTable('cd', 5)">Part 3</th>
-                                <th>Report</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                         <tbody id="tableBodyCD"></tbody>
@@ -165,7 +165,7 @@
                                 <th onclick="sortTable('hw', 3)">Part 1</th>
                                 <th onclick="sortTable('hw', 4)">Part 2</th>
                                 <th onclick="sortTable('hw', 5)">Part 3</th>
-                                <th>Report</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                         <tbody id="tableBodyHW"></tbody>
@@ -198,7 +198,7 @@
             tbody.innerHTML = '';
             data.forEach(c => {
                 const row = document.createElement('tr');
-                row.innerHTML = `<td><strong>${c.company}</strong></td><td><strong>${c.percentage}%</strong></td><td><span class="score-badge ${c.category.toLowerCase().replace(/ /g, '-')}">${c.category}</span></td><td>${c.businessScore}%</td><td>${c.applicationsScore}%</td><td>${c.infrastructureScore}%</td><td><a href="${c.reportUrl}" class="report-link" target="_blank">PDF</a></td>`;
+                row.innerHTML = `<td><strong>${c.company}</strong></td><td><strong>${c.percentage}%</strong></td><td><span class="score-badge ${c.category.toLowerCase().replace(/ /g, '-')}">${c.category}</span></td><td>${c.businessScore}%</td><td>${c.applicationsScore}%</td><td>${c.infrastructureScore}%</td><td><a href="mailto:sophiegeorginawells@gmail.com?subject=TIV Report Request - ${encodeURIComponent(c.company)}" class="report-link">Email</a></td>`;
                 tbody.appendChild(row);
             });
             updateStats(t);
