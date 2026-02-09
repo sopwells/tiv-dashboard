@@ -1,4 +1,4 @@
-# The Intelligent View
+# The Intelligent View - Jekyll Blog
 
 A clean, minimal blog for daily tech and investment insights.
 
