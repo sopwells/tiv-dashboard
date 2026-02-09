@@ -2,8 +2,8 @@
 title: The Intelligent View
 email: sophiegeorginawells@gmail.com
 description: "What's happening in the world and why it matters to markets"
-baseurl: "/theintelligentview" # Repository name
-url: "https://sopwells.github.io"
+baseurl: "" # Repository name
+url: "https://tivframework.com"
 
 # Build settings
 markdown: kramdown
