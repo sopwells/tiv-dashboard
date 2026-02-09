@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">What's happening in the world and why it matters to markets.</p>
+            <p class="hero-disclaimer">All content my opinion and not professional advice.</p>
+            <p class="hero-contact">Say hello at: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        </div>
+    </section>
+
+    <section class="articles-section">
+        <div class="articles-grid">
+            {% for post in site.posts %}
+            <article class="article-card">
+                <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: inherit;">
+                    <div class="article-viz">
+                        {% if post.visualization %}
+                        <img src="{{ post.visualization | relative_url }}" alt="{{ post.title }}">
+                        {% else %}
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--secondary); font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem;">
+                            Visualization pending
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">{{ post.category }}</span>
+                            <span>{{ post.date | date: "%d %b %Y" }}</span>
+                        </div>
+                        <h4 class="article-title">{{ post.title }}</h4>
+                        <p class="article-summary">{{ post.summary }}</p>
+                        <p class="article-commentary">{{ post.commentary }}</p>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+</div>

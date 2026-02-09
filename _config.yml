@@ -1,0 +1,22 @@
+# Site settings
+title: The Intelligent View
+email: sophiegeorginawells@gmail.com
+description: "What's happening in the world and why it matters to markets"
+baseurl: "" # Leave empty for root domain
+url: "https://tivframework.com"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
