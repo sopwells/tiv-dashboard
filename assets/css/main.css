@@ -63,7 +63,7 @@ header {
 
 /* Hero Section */
 .hero {
-    padding: 3rem 0 2rem;
+    padding: 1.5rem 0 2rem;
     border-bottom: 1px solid var(--border);
 }
 
@@ -72,29 +72,17 @@ header {
 }
 
 .hero-tagline {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--secondary);
     line-height: 1.6;
-    margin-bottom: 0.5rem;
 }
 
-.hero-disclaimer {
-    font-size: 0.95rem;
-    color: var(--secondary);
-    margin-top: 0.75rem;
-}
-
-.hero-contact {
-    margin-top: 0.5rem;
-    font-size: 0.95rem;
-}
-
-.hero-contact a {
+.hero-tagline a {
     color: var(--accent);
     text-decoration: none;
 }
 
-.hero-contact a:hover {
+.hero-tagline a:hover {
     text-decoration: underline;
 }
 
