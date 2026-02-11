@@ -97,6 +97,32 @@ header {
     gap: 2rem;
 }
 
+/* Article content bullet points and lists */
+article ul, article ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+    line-height: 1.8;
+}
+
+article li {
+    margin-bottom: 0.75rem;
+    color: var(--secondary);
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+article strong {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
 .article-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
